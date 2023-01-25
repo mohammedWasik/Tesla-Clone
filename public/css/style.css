@@ -105,8 +105,14 @@ section .content .buttons a:first-child {
 
 aside {
   transition: right 0.5s ease;
+<<<<<<< HEAD
   position: fixed;
   right: -333em;
+=======
+  right: -3333px;
+  width: 18.75em;
+  height:100vh;
+>>>>>>> 8f37c4ae0b478af3262e573e7005a3a11fc01e68
   background-color: #fff;
   width: 20em;
   height: 100vh;
@@ -167,4 +173,15 @@ aside.active {
   .desktop {
     display: initial;
   }
+<<<<<<< HEAD
 }/*# sourceMappingURL=style.css.map */
+=======
+  section .buttons {
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    -moz-column-gap: 1em;
+         column-gap: 1em;
+    max-width: 62.5em;
+  }
+}/*# sourceMappingURL=style.css.map */
+>>>>>>> 8f37c4ae0b478af3262e573e7005a3a11fc01e68
