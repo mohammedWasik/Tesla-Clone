@@ -1,20 +1,17 @@
-const openMenu = () => {
-  document.querySelector(".backdrop").className = "backdrop active";
-  document.querySelector("aside").className = "active";
-};
-const closeMenu = () => {
-  document.querySelector(".backdrop").className = "backdrop";
-  document.querySelector("aside").className = "";
-};
+const menu = document.getElementById("menu");
+const close = document.getElementById("close");
+const aside = document.querySelector("aside");
+const backdrop = document.querySelector(".backdrop");
 
-document.getElementById("menu").onclick = (e) => {
-  e.preventDefault();
-  openMenu();
-};
-
-document.querySelector("aside button.close").onclick = (e) => {
-  closeMenu();
-};
-document.querySelector(".backdrop").onclick = (e) => {
-  closeMenu();
-};
+menu.addEventListener("click", (event) => {
+  aside.classList.add("active");
+  backdrop.classList.add("active");
+});
+close.addEventListener("click", (event) => {
+  aside.classList.remove("active");
+  backdrop.classList.remove("active");
+});
+backdrop.addEventListener("click", () => {
+  aside.classList.remove("active");
+  backdrop.classList.remove("active");
+});

@@ -1,57 +1,73 @@
-@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;500&display=swap");
-$browser-context: 16; // Default
-
+//font
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+// Default size
+$browser-context: 16;
+//px to em func
 @function em($pixels, $context: $browser-context) {
   @return #{$pixels/$context}em;
 }
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-
-html {
+html,
+body {
   height: 100%;
 }
-BODY {
+body {
   color: black;
-  font-family: "Figtree", sans-serif;
-  height: 100%;
+  font-family: "Montserrat", sans-serif;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  &::-webkit-scrollbar {
+    /* WebKit chrome */
+    width: 0;
+    height: 0;
+  }
 }
 a {
   color: inherit;
 }
+
 .desktop {
   display: none;
 }
 header {
-  color: inherit;
   display: grid;
   grid-template-columns: auto 1fr auto;
-  padding: 1.2em 1.5em;
+  padding: 1em;
+  width: 100vw;
   position: fixed;
   top: 0;
   z-index: 2;
-  width: 100%;
-  a {
-    color: inherit;
+
+  .logo {
+    width: 8em;
+  }
+  .centerNav {
+    text-align: center;
+  }
+  .rightNav {
+    text-align: right;
+    button {
+      border: none;
+      background-color: rgba(59, 52, 52, 0.107);
+      padding: em(8);
+      border-radius: em(3);
+      cursor: pointer;
+      // background-color: transparent;
+    }
   }
   nav {
     a {
-      padding: 0.5em 0.5em;
+      padding: 0.25em;
       text-decoration: none;
+      &:hover {
+        text-decoration: overline;
+      }
     }
-  }
-  .center_nav {
-    text-align: center;
-  }
-  .right_nav {
-    text-align: right;
-  }
-  .logo {
-    height: 1.4em;
-    width: 12em;
-    color: inherit;
   }
 }
 .container {
@@ -63,54 +79,61 @@ header {
     scroll-snap-stop: always;
   }
 }
-
 section {
   height: 100vh;
   background-size: cover;
   background-position: center center;
   .content {
-    width: 100%;
-    height: 100vh;
     text-align: center;
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
     padding-top: 15vh;
-    padding-bottom: 15vh;
-    display: grid;
-    grid-template-rows: min-content auto min-content;
-  }
-  .buttons {
-    display: grid;
-    row-gap: 1em;
-    margin: 0 em(80);
-  }
-  .buttons a {
-    display: block;
-    background-color: #eee;
-    padding: 0.9em 4em;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 1em;
-    border-radius: em(5);
-
-    &:first-child {
-      background-color: rgba(23, 26, 32, 0.8);
-      color: #fff;
+    .buttons {
+      margin-top: 65vh;
+      a {
+        margin: em(5);
+        padding: em(9) em(70);
+        background-color: #eee;
+        text-decoration: none;
+        text-transform: capitalize;
+        border-radius: em(3);
+        &:first-child {
+          background-color: rgba(0, 0, 0, 0.642);
+          color: #fff;
+        }
+      }
     }
   }
 }
 aside {
-  position: fixed;
   transition: right 0.5s ease;
-  right: -3333px;
-  width: em(300);
+  position: fixed;
+  right: -333em;
   background-color: #fff;
-  padding: em(80) em(40);
-  z-index: 4;
+  width: em(320);
+  height: 100vh;
+  z-index: 5;
+  padding: em(60) em(40);
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  &::-webkit-scrollbar {
+    /* WebKit chrome */
+    width: 0;
+    height: 0;
+  }
   a {
     display: block;
-    color: inherit;
-    text-decoration: none;
+    width: 90%;
     padding: em(10) 0;
-    font-weight: 500;
+    text-decoration: none;
+    font-size: smaller;
+    font-weight: 600;
+    &:hover {
+      background-color: rgba(59, 52, 52, 0.107);
+      border-radius: em(3);
+    }
   }
   .close {
     font-size: em(24);
@@ -128,31 +151,20 @@ aside {
 aside.active {
   right: 0;
 }
+
 .backdrop.active {
   display: block;
 }
-
 .backdrop {
   display: none;
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(em(5));
-  .active {
-    display: block;
-  }
 }
 
-@media (min-width: 1150px) {
+@media (min-width: 1000px) {
   .desktop {
     display: initial;
-  }
-  section {
-    .buttons {
-      grid-template-columns: 1fr 1fr;
-      margin: 0 auto;
-      column-gap: em(16);
-      max-width: em(1000);
-    }
   }
 }
